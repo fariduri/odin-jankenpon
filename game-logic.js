@@ -13,17 +13,17 @@ function computerPlay() // Returns Computer Choice
     let randomPicker = Math.floor(Math.random() * (MAX - MIN)) + MIN; // Gives random integer between 1 and 9 (both included)
     console.log(randomPicker);
 
-    if(1 <= randomPicker < 4)
+    if(randomPicker >= 1 && randomPicker < 4)
     {
-
+        return(ROCK);
     } 
-    else if(4 <= randomPicker < 7)
+    else if(randomPicker >= 4 && randomPicker < 7)
     {
-
+        return(PAPER);
     }
-    else if(7 <= randomPicker < 10)
+    else
     {
-
+        return(SCISSORS);
     }
     
 }
@@ -37,7 +37,6 @@ function game() // Run game, play 5 rounds
 {
 
 }
-
-computerPlay();
-computerPlay();
-computerPlay();
+console.log(computerPlay());
+console.log(computerPlay());
+console.log(computerPlay());
