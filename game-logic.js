@@ -1,11 +1,16 @@
 console.log("遊びましょう！");
 
+// Choices
+const ROCK = "ROCK";
+const PAPER = "PAPER";
+const SCISSORS = "SCISSORS";
+
 function computerPlay() // Returns Computer Choice
 {
-    const min = 1; // min random integer range
-    const max = 10; // max random integer range
+    const MIN = 1; // min random integer range
+    const MAX = 10; // max random integer range
 
-    let randomPicker = Math.floor(Math.random() * (max - min)) + min; // Gives random integer between 1 and 9 (both included)
+    let randomPicker = Math.floor(Math.random() * (MAX - MIN)) + MIN; // Gives random integer between 1 and 9 (both included)
     console.log(randomPicker);
 
     if(1 <= randomPicker < 4)
@@ -20,7 +25,7 @@ function computerPlay() // Returns Computer Choice
     {
 
     }
-    return null;
+    
 }
 
 function playRound(playerSelection, computerSelection) // Play one round
