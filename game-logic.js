@@ -13,18 +13,12 @@ function computerPlay() // Returns Computer Choice
     let randomPicker = Math.floor(Math.random() * (MAX - MIN)) + MIN; // Gives random integer between 1 and 9 (both included)
 
     if(randomPicker >= 1 && randomPicker < 4)
-    {
         return(ROCK);
-    } 
     else if(randomPicker >= 4 && randomPicker < 7)
-    {
         return(PAPER);
-    }
     else
-    {
         return(SCISSORS);
-    }
-    
+        
 }
 
 function playRound(playerSelection, computerSelection) // Play one round
@@ -51,6 +45,7 @@ function playRound(playerSelection, computerSelection) // Play one round
     }
 
     return score;
+
 }
 
 function game() // Run game, play 5 rounds
@@ -69,7 +64,7 @@ function game() // Run game, play 5 rounds
 
         while(playerInput != ROCK && playerInput != PAPER && playerInput != SCISSORS)// Ask Player Input, if input not Rock Paper or Scissors, ask again
         {
-            playerInput = (prompt(`Round ${round}\nChoose: Rock, Paper, Scissors | Not case sensitive!`)).toUpperCase();
+            playerInput = (prompt(`Invalid Input!\nRound ${round}\nChoose: Rock, Paper, Scissors | Not case sensitive!`)).toUpperCase();
         }
         
         updateScore = playRound(playerInput, computerInput); // determine who won
@@ -88,7 +83,6 @@ function game() // Run game, play 5 rounds
         console.log("MATCH LLLLLLLLLLLLL");
     else
         console.log("DRAAAAAAAAWWW LLLLLLLLL");
-    
     
 }
 
