@@ -4,11 +4,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="game-logic.js" defer></script>
+    <link rel="stylesheet" href="style.css">
 
     <title>Jan-Ken-Pon</title>
 </head>
 <body>
-    <h1>Jan-Ken-Pon</h1>
-    <h2>ジャンケンポン</h2>
+    <div class="container">
+        <h1>ジャンケンポン</h2>
+        <h3>Jan-Ken-Pon</h1>
+        
+        <div id="display-hands">
+            <div id="computer-hand" class="show-hand">
+                HAND
+            </div>
+            <div id="player-hand" class="show-hand">
+                HAND
+            </div>
+        </div>
+    
+        <div class="hands">
+            <button data-key="ROCK" class="hand">Rock</button>
+            <button data-key="PAPER" class="hand">Paper</button>
+            <button data-key="SCISSORS" class="hand">Scissors</button>
+        </div>
+    </div>
+    
 </body>
 </html>

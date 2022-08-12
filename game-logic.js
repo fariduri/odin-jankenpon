@@ -48,15 +48,17 @@ function game(hand)
 
     const computerHand = getComputerChoice().toUpperCase();
     const playerHand = hand;
-    console.log("HHH:", playerHand);
 
     console.log("遊びましょう！");
 
-    let round = 1;
+    const computerHandDisp = document.querySelector("#computer-hand");
+    const playerHandDisp = document.querySelector("#player-hand");
+
+    computerHandDisp.textContent = computerHand;
+    playerHandDisp.textContent = playerHand;
+
 
     const result = playRound(playerHand, computerHand);
-    
-    console.log(`::::: Round ${round} :::::`);
 
     switch(result)
     {
@@ -77,7 +79,7 @@ function game(hand)
     console.log(message);
 }
 
-function getHand(e)
+function getPlayerHand(e)
 {
     hand = this.getAttribute('data-key');
     game(hand);
@@ -85,7 +87,7 @@ function getHand(e)
 
 function setUpGame() {
     let hands = document.querySelectorAll(".hand");
-    hands.forEach(hand => hand.addEventListener('click', getHand));
+    hands.forEach(hand => hand.addEventListener('click', getPlayerHand));
 }
 
 setUpGame();
