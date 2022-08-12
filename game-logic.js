@@ -49,32 +49,31 @@ function game()
 
     console.log("遊びましょう！");
 
-    for (let round = 1; round <= 5; round++)
+    let round = 1;
+
+    computerHand = getComputerChoice().toUpperCase();
+    console.log(`::::: Round ${round} :::::`);
+
+    do {
+        playerHand = prompt(`::::: Round ${round} :::::\nChoose Your Weapon!\n 'ROCK', 'PAPER', 'SCISSORS'`).toUpperCase();
+    } while (playerHand !== ROCK && playerHand !== PAPER && playerHand !== SCISSORS);
+
+    result = playRound(playerHand, computerHand);
+
+    switch(result)
     {
-        computerHand = getComputerChoice().toUpperCase();
-        console.log(`::::: Round ${round} :::::`);
-
-        do {
-            playerHand = prompt(`::::: Round ${round} :::::\nChoose Your Weapon!\n 'ROCK', 'PAPER', 'SCISSORS'`).toUpperCase();
-        } while (playerHand !== ROCK && playerHand !== PAPER && playerHand !== SCISSORS);
-
-        result = playRound(playerHand, computerHand);
-
-        switch(result)
-        {
-            case DRAW:
-                playerScore++;
-                computerScore++;
-                break;
-            case PLAYERWINS:
-                playerScore++;
-                break;
-            case COMPUTERWINS:
-                computerScore++;
-                break;    
-        }
+        case DRAW:
+            playerScore++;
+            computerScore++;
+            break;
+        case PLAYERWINS:
+            playerScore++;
+            break;
+        case COMPUTERWINS:
+            computerScore++;
+            break;    
     }
-
+    
     let whoWon = (playerScore>computerScore) ? "You Won!": (playerScore<computerScore) ? "You Lost!" : "It's a Draw!";
     let message = `${whoWon}\n\nFinal Score\nPlayer: ${playerScore} Computer: ${computerScore}`;
     alert(message);
