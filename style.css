@@ -1,13 +1,23 @@
-#display-hands {
+#sides {
     display: flex;
     flex-direction: row;
     margin: 10px 0px;
 }
 
 .show-hand {
-    padding: 10px;
-    margin-right: 6px;
+    padding: 10px;    
+}
+
+.score {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.side {
     border: 1px solid;
+    margin-right: 6px;
+    width: 300px
 }
 
 .container {
@@ -16,3 +26,14 @@
     align-items: center;
 }
 
+h4 {
+    background-color: black;
+    color: white;
+    margin: 0;
+    padding: 2px 12px;
+    text-align: center;
+}
+
+.show-hand {
+    text-align: center;
+}
