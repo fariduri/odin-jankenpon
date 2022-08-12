@@ -41,24 +41,22 @@ function playRound(playerHand, computerHand)
     }
 }
 
-function game()
+function game(hand)
 {
-    let computerHand, playerHand, result;
     let playerScore = 0;
     let computerScore = 0;
+
+    const computerHand = getComputerChoice().toUpperCase();
+    const playerHand = hand;
+    console.log("HHH:", playerHand);
 
     console.log("遊びましょう！");
 
     let round = 1;
 
-    computerHand = getComputerChoice().toUpperCase();
+    const result = playRound(playerHand, computerHand);
+    
     console.log(`::::: Round ${round} :::::`);
-
-    do {
-        playerHand = prompt(`::::: Round ${round} :::::\nChoose Your Weapon!\n 'ROCK', 'PAPER', 'SCISSORS'`).toUpperCase();
-    } while (playerHand !== ROCK && playerHand !== PAPER && playerHand !== SCISSORS);
-
-    result = playRound(playerHand, computerHand);
 
     switch(result)
     {
@@ -73,10 +71,22 @@ function game()
             computerScore++;
             break;    
     }
-    
+
     let whoWon = (playerScore>computerScore) ? "You Won!": (playerScore<computerScore) ? "You Lost!" : "It's a Draw!";
     let message = `${whoWon}\n\nFinal Score\nPlayer: ${playerScore} Computer: ${computerScore}`;
-    alert(message);
+    console.log(message);
 }
 
-game();
+function getHand(e)
+{
+    hand = this.getAttribute('data-key');
+    game(hand);
+}
+
+function setUpGame() {
+    let hands = document.querySelectorAll(".hand");
+    hands.forEach(hand => hand.addEventListener('click', getHand));
+}
+
+setUpGame();
+
