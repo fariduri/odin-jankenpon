@@ -43,11 +43,16 @@ function playRound(playerHand, computerHand)
 
 function game(hand)
 {
+    const roundInfoTextElm = document.querySelector("#round-info-text"); 
+    let round = parseInt(roundInfoTextElm.getAttribute("data-key"));
+
+    if (round >= 5) return;
+
     function setScore() {
         playerScoreElm.setAttribute("data-key", playerScore);
         computerScoreElm.setAttribute("data-key", computerScore);
-        playerScoreElm.textContent = playerScore;
-        computerScoreElm.textContent = computerScore;
+        playerScoreElm.textContent = `Score: ${playerScore}`;
+        computerScoreElm.textContent = `Score: ${computerScore}`;
     }
 
     const computerHandElm = document.querySelector("#computer-hand");
@@ -55,7 +60,6 @@ function game(hand)
     const playerScoreElm = document.querySelector("#player-score");
     const computerScoreElm = document.querySelector("#computer-score");
     const gameInfoTextElm = document.querySelector("#game-info-text");
-    const roundInfoTextElm = document.querySelector("#round-info-text"); 
 
     const computerHand = getComputerChoice().toUpperCase();
     const playerHand = hand;
@@ -84,9 +88,9 @@ function game(hand)
 
     setScore();
 
-    const nextRound = parseInt(roundInfoTextElm.getAttribute("data-key"))+1;
-    roundInfoTextElm.setAttribute("data-key", nextRound);
-    roundInfoTextElm.textContent = `Round ${nextRound}`;
+    round += 1;
+    roundInfoTextElm.setAttribute("data-key", round);
+    roundInfoTextElm.textContent = `Round ${round}`;
 
     let whoWon = (playerScore>computerScore) ? "You Won!": (playerScore<computerScore) ? "You Lost!" : "It's a Draw!";
     let message = `${whoWon}\n\nScore\nPlayer: ${playerScore} Computer: ${computerScore}`;
