@@ -43,19 +43,29 @@ function playRound(playerHand, computerHand)
 
 function game(hand)
 {
-    let playerScore = 0;
-    let computerScore = 0;
+    function setScore() {
+        playerScoreElm.setAttribute("data-key", playerScore);
+        computerScoreElm.setAttribute("data-key", computerScore);
+        playerScoreElm.textContent = playerScore;
+        computerScoreElm.textContent = computerScore;
+    }
+
+    const computerHandElm = document.querySelector("#computer-hand");
+    const playerHandElm = document.querySelector("#player-hand");
+
+    let playerScoreElm = document.querySelector("#player-score");
+    let computerScoreElm = document.querySelector("#computer-score");
 
     const computerHand = getComputerChoice().toUpperCase();
     const playerHand = hand;
 
-    console.log("遊びましょう！");
+    computerHandElm.textContent = computerHand;
+    playerHandElm.textContent = playerHand;
 
-    const computerHandDisp = document.querySelector("#computer-hand");
-    const playerHandDisp = document.querySelector("#player-hand");
+    let playerScore = playerScoreElm.getAttribute("data-key");
+    let computerScore = computerScoreElm.getAttribute("data-key");
 
-    computerHandDisp.textContent = computerHand;
-    playerHandDisp.textContent = playerHand;
+    const gameInfoElm = document.querySelector("#game-info-text");
 
 
     const result = playRound(playerHand, computerHand);
@@ -74,9 +84,12 @@ function game(hand)
             break;    
     }
 
+    setScore();
+
     let whoWon = (playerScore>computerScore) ? "You Won!": (playerScore<computerScore) ? "You Lost!" : "It's a Draw!";
-    let message = `${whoWon}\n\nFinal Score\nPlayer: ${playerScore} Computer: ${computerScore}`;
-    console.log(message);
+    let message = `${whoWon}\n\nScore\nPlayer: ${playerScore} Computer: ${computerScore}`;
+    gameInfoElm.textContent = message;
+    
 }
 
 function getPlayerHand(e)
