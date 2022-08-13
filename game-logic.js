@@ -52,21 +52,19 @@ function game(hand)
 
     const computerHandElm = document.querySelector("#computer-hand");
     const playerHandElm = document.querySelector("#player-hand");
-
-    let playerScoreElm = document.querySelector("#player-score");
-    let computerScoreElm = document.querySelector("#computer-score");
+    const playerScoreElm = document.querySelector("#player-score");
+    const computerScoreElm = document.querySelector("#computer-score");
+    const gameInfoTextElm = document.querySelector("#game-info-text");
+    const roundInfoTextElm = document.querySelector("#round-info-text"); 
 
     const computerHand = getComputerChoice().toUpperCase();
     const playerHand = hand;
 
-    computerHandElm.textContent = computerHand;
-    playerHandElm.textContent = playerHand;
-
     let playerScore = playerScoreElm.getAttribute("data-key");
     let computerScore = computerScoreElm.getAttribute("data-key");
 
-    const gameInfoElm = document.querySelector("#game-info-text");
-
+    computerHandElm.textContent = computerHand;
+    playerHandElm.textContent = playerHand;
 
     const result = playRound(playerHand, computerHand);
 
@@ -86,10 +84,13 @@ function game(hand)
 
     setScore();
 
+    const nextRound = parseInt(roundInfoTextElm.getAttribute("data-key"))+1;
+    roundInfoTextElm.setAttribute("data-key", nextRound);
+    roundInfoTextElm.textContent = `Round ${nextRound}`;
+
     let whoWon = (playerScore>computerScore) ? "You Won!": (playerScore<computerScore) ? "You Lost!" : "It's a Draw!";
     let message = `${whoWon}\n\nScore\nPlayer: ${playerScore} Computer: ${computerScore}`;
-    gameInfoElm.textContent = message;
-    
+    gameInfoTextElm.textContent = message;
 }
 
 function getPlayerHand(e)

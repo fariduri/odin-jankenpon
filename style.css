@@ -51,3 +51,14 @@ h4 {
     font-size: 16px;
     padding: 5px;
 }
+
+p {
+    text-align: center;
+    margin: 2px;
+}
+
+#round-info-text {
+    color: black;
+    font-weight: 400;
+    font-size: 28px;
+}
